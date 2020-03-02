@@ -2,40 +2,25 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Routing\Annotation\Route;
-
-    /**
-     * @Route("/", name="default")
-     */
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class DefaultController extends AbstractController
 {
+    public function __construct(LoggerInterface $logger)
+    {
+        $this->logger = $logger;
+    }
+    
     /**
-     * @Route("index", name="index")
+     * @Route("/", name="default")
      */
     public function index()
     {
+        $this->logger->info('Une info.');
         return $this->render('default/index.html.twig', [
             'controller_name' => 'DefaultController',
         ]);
     }
-    /**
-     * @Route("user", name="user")
-     */
-    public function user()
-    {
-        $usersList = array();
-
-        $usersList[0]['first_name'] = 'Crystal';
-        $usersList[0]['last_name'] = 'E. Everns';
-
-        $usersList[1]['first_name'] = 'Erevans';
-        $usersList[1]['last_name'] = 'Leonherd';
-    
-        return $this->render('user/user.html.twig', [
-            'users_list' => $usersList,
-        ]);
-    }
-
 }
