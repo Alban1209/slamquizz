@@ -22,9 +22,13 @@
         </tbody>
     </table>
 
-    <a href="{{ path('answer_index') }}">back to list</a>
+    <form action="{{ path('answer_index') }}">
+        <button class="btn btn-primary" type="submit"><i class="fas fa-reply"></i>     Retour</button>
+    </form>
 
-    <a href="{{ path('answer_edit', {'id': answer.id}) }}">edit</a>
+    <form action="{{ path('answer_edit', {'id': answer.id}) }}">
+        <button class="btn btn-primary" type="submit"><i class="fas fa-edit"></i>     Modifier</button>
+    </form>
 
     {{ include('answer/_delete_form.html.twig') }}
 {% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Quiz index{% endblock %}
+
+{% block body %}
+    <h1>Quiz index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Summary</th>
+                <th>Number_of_questions</th>
+                <th>Active</th>
+                <th>Created_at</th>
+                <th>Updated_at</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for quiz in quizzes %}
+            <tr>
+                <td>{{ quiz.id }}</td>
+                <td>{{ quiz.title }}</td>
+                <td>{{ quiz.summary }}</td>
+                <td>{{ quiz.numberOfQuestions }}</td>
+                <td>{{ quiz.active ? 'Yes' : 'No' }}</td>
+                <td>{{ quiz.createdAt ? quiz.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ quiz.updatedAt ? quiz.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <form action="{{ path('quiz_show', {'id': quiz.id}) }}">
+                        <button class="btn btn-primary" type="submit"><i class="far fa-eye"></i>     Afficher</button>
+                    </form>
+                    <form action="{{ path('quiz_edit', {'id': quiz.id}) }}">
+                        <button class="btn btn-primary" type="submit"><i class="fa fa-pencil-square-o"></i>     Modifier</button>
+                    </form>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <form action="{{ path('quiz_new') }}">
+        <button class="btn btn-primary" type="submit"><i class="far fa-plus-square"></i>     Créer un nouveau questionnaire</button>
+    </form>
+{% endblock %}

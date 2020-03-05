@@ -1,13 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Question{% endblock %}
+{% block title %}New Quiz{% endblock %}
 
 {% block body %}
-    <h1>Create new Question</h1>
+    <h1>Create new Quiz</h1>
 
-    {{ include('question/_form.html.twig') }}
+    {{ include('quiz/_form.html.twig') }}
 
-    <form action="{{ path('question_index') }}">
+    <form action="{{ path('quiz_index') }}">
         <button class="btn btn-primary" type="submit"><i class="fas fa-reply"></i>     Retour</button>
     </form>
 {% endblock %}

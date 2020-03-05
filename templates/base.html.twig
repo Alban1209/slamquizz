@@ -28,29 +28,30 @@
 
             <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                 <ul class="navbar-nav mr-auto">
-                    {# {% if is_granted('ROLE_USER') %}
+                    {% if is_granted('ROLE_USER') %}
                         <li class="nav-item">
+                            <a class="nav-link {% if '/quiz/' in app.request.server.get('REQUEST_URI') %} active {% endif %}" href="{{ path('quiz_index') }}">{{ 'Quiz'|trans }}</a>
+                        </li>
+                        {# <li class="nav-item">
                             <a class="nav-link" href="{{ path('default') }}">{{ 'Default'|trans }}</a>
-                        </li>
-                    {% endif %} #}
+                        </li> #}
+                    {% endif %}
                     {% if is_granted('ROLE_ADMIN') %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('category_index') }}">Category</a>
+                            <a class="nav-link" href="{{ path('category_index') }}">{{ 'Category'|trans }}</a>
                         </li>
-                    {% endif %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('answer_index') }}">{{ 'Answer'|trans }}</a>
-                    </li>
-                    {% if is_granted('ROLE_ADMIN') %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('question_index') }}">Question</a>
+                            <a class="nav-link" href="{{ path('answer_index') }}">{{ 'Answer'|trans }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('question_index') }}">{{ 'Question'|trans }}</a>
                         </li>
                     {% endif %}
-                    {% if is_granted('ROLE_SUPER_ADMIN') %}
+                    {# {% if is_granted('ROLE_SUPER_ADMIN') %}
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('user_index') }}">{{ 'User'|trans }}</a>
                         </li>
-                    {% endif %}
+                    {% endif %} #}
                 </ul>
                 <ul class="navbar-nav">
                     {% if is_granted('ROLE_USER') %}
@@ -63,14 +64,14 @@
                             </div>
                         </li>
                         <li>
-                            <a class="nav-link" href="{{ path('app_logout') }}">{{'Logout'|trans}}</a>
+                            <a class="nav-link" href="{{ path('app_logout') }}">{{ 'Logout'|trans }}</a>
                         </li>
                     {% else %}
                         <li>
-                            <a class="nav-link {% if '/app_register' in app.request.server.get('REQUEST_URI') %} active {% endif %}" href="{{ path('app_register') }}">{{'Sign up'|trans}}</a>
+                            <a class="nav-link {% if '/app_register' in app.request.server.get('REQUEST_URI') %} active {% endif %}" href="{{ path('app_register') }}">{{ 'Sign up'|trans }}</a>
                         </li>
                         <li>
-                            <a class="nav-link {% if '/app_login' in app.request.server.get('REQUEST_URI') %} active {% endif %}" href="{{ path('app_login') }}">{{'Sign in'|trans}}</a>
+                            <a class="nav-link {% if '/app_login' in app.request.server.get('REQUEST_URI') %} active {% endif %}" href="{{ path('app_login') }}">{{ 'Sign in'|trans }}</a>
                         </li>
                     {% endif %}
                 </ul>
