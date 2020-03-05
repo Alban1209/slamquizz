@@ -22,10 +22,10 @@
                 <td>{{ answer.correct ? 'Yes' : 'No' }}</td>
                 <td>
                     <form action="{{ path('answer_show', {'id': answer.id}) }}">
-                        <button class="btn btn-primary" type="submit">show</button>
+                        <button class="btn btn-primary" type="submit"><i class="far fa-eye"></i>     Afficher</button>
                     </form>
                     <form action="{{ path('answer_edit', {'id': answer.id}) }}">
-                        <button class="btn btn-primary" type="submit">edit</button>
+                        <button class="btn btn-primary" type="submit"><i class="fa fa-pencil-square-o"></i>     Modifier</button>
                     </form>
                 </td>
             </tr>
@@ -38,6 +38,6 @@
     </table>
 
     <form action="{{ path('answer_new') }}">
-        <button class="btn btn-primary" type="submit">Create new</button>
+        <button class="btn btn-primary" type="submit"><i class="far fa-plus-square"></i>     Créer une nouvelle réponse</button>
     </form>
 {% endblock %}
